@@ -113,7 +113,109 @@
     0.5972
   ],
   "featureinfoOptions": {
-    "infowindow": "overlay"
+    "infowindow": "infowindow",
+    "multiSelectionStyles": {
+		  "selected": [
+        {
+          "zIndex": 1,
+          "fill": {
+            "color": [128, 128, 128, 0.13]  // GRÅ
+          },
+          "stroke": {
+            "color": [0, 0, 0, 0.13],       // SVART
+            //"lineDash": [3,5],
+            "width": 3
+          },
+          "circle": {
+            "radius": 14,
+            "stroke": {
+              "color": [0, 0, 0, 0.13],       // SVART
+              "width": 3
+            },
+            "fill": {
+              "color": [128, 128, 128, 0.13]  // GRÅ
+            }
+          }
+        }
+      ],
+		  "inActiveLayer": [
+        {
+          "zIndex": 3,
+          "fill": {
+            "color": [247, 247, 0, 0.1]    //GUL ----- [128, 128, 192, 0.25] LILA
+			    },
+          "stroke": {
+            "color": [255, 255, 255, 1],    // VIT
+            "width": 4
+			    },
+          "circle": {
+            "radius": 13,
+            "stroke": {
+              "color": [255, 255, 255, 1], // VIT
+              "width": 5
+            },
+            "fill": {
+              "color": [255, 255, 255, 0.01]  // VIT
+            }
+          }
+			  },
+        {
+          "zIndex": 4,
+          "stroke": {
+            "color": [247, 247, 0, 1],    //GUL --- [220, 24, 24, 1] RÖD
+            "width": 2
+          },
+          "circle": {
+            "radius": 13,
+            "stroke": {
+              "color": [247, 247, 0, 1],  //GUL --- [220, 24, 24, 1] RÖD
+              "width": 2
+            },
+            "fill": {
+              "color": [247, 247, 0, 0.0]  // GUL OSYNLIG ---- [128, 128, 192, 0.25] LILA
+            }
+          }
+        }
+		  ],
+		  "highlighted": [{
+			  "zIndex": 5,
+			  "fill": {
+				  "color": [255, 255, 255, 0.3] // VIT
+			  },
+			  "stroke": {
+          "color": [255, 255, 255, 1], //VIT
+          "width": 6
+			  },
+			  "circle": {
+          "radius": 14,
+          "stroke": {
+            "color": [255, 255, 255, 1], //VIT
+            "width": 6
+          },
+          "fill": {
+            "color": [255, 255, 255, 0.01] //VIT
+          }
+			  }
+			},
+			{
+			  "zIndex": 6,
+			  "stroke": {
+          "color": [0, 230, 230, 1],    // klarBLÅ
+          "width": 3
+			  },
+			  "circle": {
+          "radius": 14,
+          "stroke": {
+            "color": [0, 230, 230, 1],  // klarBLÅ
+            "width": 3
+          },
+          "fill": {
+            "color": [255, 255, 255, 0.3] //VIT
+          }
+			  }
+			}
+		  ]
+		}
   },
   "source": {
     "local": {
@@ -130,16 +232,20 @@
   "layers": [
     {
       "name": "origo-cities",
-      "title": "Origokommuner",
+      "title": "Origokommuner dsf ",
       "group": "root",
       "source": "data/origo-cities-3857.geojson",
-      "style": "origo-logo",
+      "style": "cirkel",
       "type": "GEOJSON",
-      "attributes": [
-        {
-          "name": "name"
-        }
-      ],
+      "visible": true
+    },{
+      "name": "test2",
+      "title": "Polygon2",
+      "group": "root",
+      "queryable": true,
+      "source": "data/test2.geojson",
+      "style": "mask2",
+      "type": "GEOJSON",
       "visible": true
     },
     {
@@ -147,7 +253,7 @@
       "opacity": 0.25,
       "title": "origo-mask",
       "group": "none",
-      "queryable": false,
+      "queryable": true,
       "source": "data/origo-mask-3857.geojson",
       "style": "mask",
       "type": "GEOJSON",
@@ -172,6 +278,15 @@
           },
           "fill": {
             "color": "rgba(0,0,0,1.0)"
+          }
+        }
+      ]
+    ],
+    "mask2": [
+      [
+        {
+          "fill": {
+            "color": "rgba(255,50,90,0.25)"
           }
         }
       ]
@@ -215,9 +330,26 @@
               "width": 2
             },
             "fill": {
-              "color": "rgba(0,0,0,0.5)"
+              "color": "rgba(0,255,0,0.5)"
             }
-          }
+          },
+          "filter": "[namea] === 'aaa'",
+          "label": "regex"
+        }
+      ],
+      [
+        {
+          "circle": {
+            "radius": 6,
+            "stroke": {
+              "color": "rgba(0,0,0,1)",
+              "width": 2
+            },
+            "fill": {
+              "color": "rgba(250,0,0,0.5)"
+            }
+          },
+          "filter": "[nameb] === 'bbb'"
         }
       ]
     ],
